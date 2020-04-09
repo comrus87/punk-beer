@@ -1,0 +1,44 @@
+.list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: flex;
+	align-items: center;
+}
+
+.item {
+	margin-right: 50px;
+
+	a {
+		font-family: "Roboto";
+		font-weight: 500;
+		font-size: 14px;
+		line-height: 14px;
+		color: #ffffff;
+		display: block;
+		width: 130px;
+		border-radius: 5px;
+		text-align: center;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		background-image: linear-gradient(to left, transparent, transparent 50%, #ff9933 50%, #ff9933);
+		background-position: 0 0;
+ 		background-size: 200% 100%;
+		text-transform: uppercase;
+		transition: all 0.3s ease-in;
+		outline: none;
+
+		&:hover,
+		&:focus {
+			background-position: -100% 0;
+			color: #ff9933;
+			border: 2px solid #ff9933;
+			background-color: #ffffff;
+		}
+
+		&:active {
+			opacity: 0.6;
+		}
+	}
+
+}
