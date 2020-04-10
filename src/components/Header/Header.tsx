@@ -12,7 +12,7 @@ function Header() {
             <a className={classes.logo}>
               <img src={logo} alt="Логотип Пивотеки" />
             </a>
-            <p className={classes.description}>Коллекция элитных сортов пива</p>
+            <p className={classes.description}>Коллекция крафтовых сортов пива</p>
           </div>
           <Navigation />
         </div>
