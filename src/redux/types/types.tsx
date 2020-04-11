@@ -1,4 +1,4 @@
-export type beerType = {
+export type BeerType = {
   id: number,
   name: string,
   tagline: string,

@@ -9,9 +9,9 @@ function Header() {
         <div className={classes.wrap}>
           <h1 hidden>Пивотека</h1>
           <div className={classes.titleContainer}>
-            <a className={classes.logo}>
+            <div className={classes.logo}>
               <img src={logo} alt="Логотип Пивотеки" />
-            </a>
+            </div>
             <p className={classes.description}>Коллекция крафтовых сортов пива</p>
           </div>
           <Navigation />
