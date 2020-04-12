@@ -1,6 +1,6 @@
 .item {
 	width: 300px;
-	min-height: 450px;
+	min-height: 440px;
 	margin-right: 20px;
 	margin-bottom: 20px;
 	transition: all 0.15s ease-in;
@@ -36,7 +36,7 @@
 }
 
 .titelBeer {
-	margin: 15px 0 5px;
+	margin: 20px 0 10px;
 	font-family: "Roboto";
 	font-weight: 700;
 	font-size: 18px;
@@ -58,9 +58,13 @@
 }
 
 .description {
-	margin: 10px 0 0;
+	margin: 15px 0 0;
 	font-family: "Roboto";
 	font-weight: 400;
 	font-size: 12px;
 	line-height: 18px;
+	max-height: 70px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
