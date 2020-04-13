@@ -5,16 +5,21 @@ type PropsType = {
   totalBeers: number, 
   pageSize: number, 
   currentPage:  number, 
-  portialSize: number, 
+  portialSize: number,
+  isSearchMode: boolean,
+  beersCount: number,
   onPageChanged: (pageNumber: number) => void
 }
 
 const Pagination: React.FC<PropsType> = props => {
+ 
+    const totalBeers = props.isSearchMode ? props.beersCount : props.totalBeers;
 
-    let countPage = Math.ceil(props.totalBeers/props.pageSize);
-    let portionCount = Math.ceil(countPage/props.portialSize);
+    const countPage = Math.ceil(totalBeers/props.pageSize);
+    const portionCount = Math.ceil(countPage/props.portialSize);
 
-    let [portionNumber, setPortionNumber] = useState(1);
+    const [portionNumber, setPortionNumber] = useState(1);
+
 
     const setPortionNumberPrev = function() {
       if (portionNumber > 1) {
@@ -28,10 +33,10 @@ const Pagination: React.FC<PropsType> = props => {
       }
     }
 
-    let leftPortionNumber = (portionNumber - 1) * props.portialSize + 1;
-    let rightPortionNumber = portionNumber * props.portialSize;
+    const leftPortionNumber = (portionNumber - 1) * props.portialSize + 1;
+    const rightPortionNumber = portionNumber * props.portialSize;
 
-    let pages: Array<number> = [];
+    const pages: Array<number> = [];
 
     for (let i=1; i <= countPage; i++) {
       pages.push(i)
@@ -50,7 +55,7 @@ const Pagination: React.FC<PropsType> = props => {
                     return <span className={props.currentPage === page 
                       ? classes.countPage + ' ' + classes.currentPage 
                       : classes.countPage}
-                      onClick={(evt) => props.onPageChanged(page)} key={index}> {page} </span>
+                      onClick={(evt) => {!props.isSearchMode && props.onPageChanged(page)}} key={index}> {page} </span>
                     })
             }
             </div>

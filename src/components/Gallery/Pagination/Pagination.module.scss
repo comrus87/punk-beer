@@ -1,6 +1,5 @@
 .container {
 	display: flex;
-	margin-bottom: 30px;
 	max-width: 400px;
 }
 
@@ -8,20 +7,21 @@
 	display: block;
 	font-family: "Roboto";
 	font-weight: 500;
-	font-size: 14px;
-	line-height: 14px;
-	background: none;
+	font-size: 12px;
+	line-height: 12px;
 	outline: none;
 	width: 50px;
-	border: 1px solid #000000;
-	color: black;
+	border: 1px solid transparent;
+	color: #ffffff;
+	background-color: #ff9933;
 	cursor: pointer;
-	padding: 10px 0;
+	padding: 9px 0;
 
 	&:hover,
 	&focus {
 		border: 1px solid #ff9933;
 		color: #ff9933;
+		background-color: #ffffff;
 	}
 
 	&:active {
@@ -30,13 +30,13 @@
 }
 
 .btnPrev {
-	border-bottom-left-radius: 18px;
-	border-top-left-radius: 18px;
+	border-bottom-left-radius: 15px;
+	border-top-left-radius: 15px;
 }
 
 .btnNext {
-	border-bottom-right-radius: 18px;
-	border-top-right-radius: 18px;
+	border-bottom-right-radius: 15px;
+	border-top-right-radius: 15px;
 }
 
 .containerCount {
@@ -50,23 +50,24 @@
 .countPage {
 	font-family: "Roboto";
 	font-weight: 400;
-	font-size: 16px;
-	line-height: 16px;
+	font-size: 14px;
+	line-height: 14px;
 	cursor: pointer;
-	color: #000000;
+	color: #ff9933;
 	margin-right: 8px;
 	display: block;
-	border: 1px solid #000000;
+	border: 1px solid #ff9933;
 	border-radius: 50%;
-	width: 36px;
-	height: 36px;
+	width: 30px;
+	height: 30px;
 	text-align: center;
-	padding-top: 10px;
+	padding-top: 8px;
 
 	&:hover,
 	&focus {
-		border: 1px solid #ff9933;
-		color: #ff9933;
+		border: 1px solid #ffffff;
+		color: #ffffff;
+		background-color: #ff9933;
 	}
 
 	&:active {
@@ -75,8 +76,9 @@
 }
 
 .currentPage {
-	border: 1px solid #ff9933;
-	color: #ff9933;
+	border: 1px solid #ffffff;
+	color: #ffffff;
+	background-color: #ff9933;
 }
 
 .btnDisabled {
@@ -85,8 +87,9 @@
 
 	&:hover,
 	&focus {
-		border: 1px solid #000000;
-		color: #000000;
+		border: 1px solid transparent;
+		color: #ffffff;
+		background-color: #ff9933;
 	}
 
 	&:active {
