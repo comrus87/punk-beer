@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import classes from './Pagination.module.scss';
 
 type PropsType = {
@@ -8,7 +8,9 @@ type PropsType = {
   portialSize: number,
   isSearchMode: boolean,
   beersCount: number,
-  onPageChanged: (pageNumber: number) => void
+  onPageChanged: (pageNumber: number) => void,
+  portionNumber: number,
+  setPortionNumber: (portionNumber: number) => void
 }
 
 const Pagination: React.FC<PropsType> = props => {
@@ -18,23 +20,20 @@ const Pagination: React.FC<PropsType> = props => {
     const countPage = Math.ceil(totalBeers/props.pageSize);
     const portionCount = Math.ceil(countPage/props.portialSize);
 
-    const [portionNumber, setPortionNumber] = useState(1);
-
-
     const setPortionNumberPrev = function() {
-      if (portionNumber > 1) {
-       setPortionNumber(portionNumber - 1)
+      if (props.portionNumber > 1) {
+       props.setPortionNumber(props.portionNumber - 1)
       }
     }
 
     const setPortionNumberNext = function() {
-      if (portionNumber < portionCount) {
-        setPortionNumber(portionNumber + 1);
+      if (props.portionNumber < portionCount) {
+        props.setPortionNumber(props.portionNumber + 1);
       }
     }
 
-    const leftPortionNumber = (portionNumber - 1) * props.portialSize + 1;
-    const rightPortionNumber = portionNumber * props.portialSize;
+    const leftPortionNumber = (props.portionNumber - 1) * props.portialSize + 1;
+    const rightPortionNumber = props.portionNumber * props.portialSize;
 
     const pages: Array<number> = [];
 
@@ -44,7 +43,7 @@ const Pagination: React.FC<PropsType> = props => {
 
     return (
           <div className={classes.container}>
-            <button className={portionNumber === 1 
+            <button className={props.portionNumber === 1 
               ? classes.btn + ' ' + classes.btnPrev + ' ' + classes.btnDisabled
               : classes.btn + ' ' + classes.btnPrev} 
               onClick={setPortionNumberPrev}> Prev </button>
@@ -55,12 +54,12 @@ const Pagination: React.FC<PropsType> = props => {
                     return <span className={props.currentPage === page 
                       ? classes.countPage + ' ' + classes.currentPage 
                       : classes.countPage}
-                      onClick={(evt) => {!props.isSearchMode && props.onPageChanged(page)}} key={index}> {page} </span>
+                      onClick={evt => props.onPageChanged(page)} key={index}> {page} </span>
                     })
             }
             </div>
 
-            <button className={portionNumber >= portionCount
+            <button className={props.portionNumber >= portionCount
               ? classes.btn + ' ' + classes.btnNext + ' ' + classes.btnDisabled
               : classes.btn + ' ' + classes.btnNext} 
               onClick={setPortionNumberNext}> Next </button>

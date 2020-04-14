@@ -24,18 +24,34 @@ type PropsType = MapStatePropsType & MapDispatchPropsType & PropsFromRedux;
 
 class GalleryContainer extends React.Component<PropsType> {
 
+  state = {
+    portionNumber: 1
+  }
+
+  setPortionNumber = (portionNumber: number) => {
+      this.setState({portionNumber});
+  }
+
   componentDidMount() {
     this.props.getBeers(this.props.currentPage, this.props.pageSize);
   }
 
   onPageChanged = (pageNumber: number) => {
+    if (!this.props.isSearchMode) {
+      this.props.getBeers(pageNumber, this.props.pageSize);
+    }
     this.props.setCurrentPage(pageNumber);
-    this.props.getBeers(pageNumber, this.props.pageSize);
   }
 
   onPageSearch = (value: string) => {
-    this.props.getBeersSearch(value);
+    const a = value.trim();
+    if (a) {
+      this.props.getBeersSearch(a);
+      this.props.setCurrentPage(1);
+      this.setPortionNumber(1);
+    }
   }
+
 
   render() {
     return <Gallery beers={this.props.beers}
@@ -46,6 +62,8 @@ class GalleryContainer extends React.Component<PropsType> {
                     onPageChanged={this.onPageChanged}
                     onPageSearch={this.onPageSearch}
                     isSearchMode={this.props.isSearchMode}
+                    portionNumber={this.state.portionNumber}
+                    setPortionNumber={this.setPortionNumber}
      />
 
   }
